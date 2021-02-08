@@ -32,8 +32,7 @@ public class MainActivity extends AppCompatActivity {
 
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
             gamesList fragment = new gamesList();
-            fragmentTransaction.add(R.id.fragment_container, fragment, "LIST_ADD");
-            fragmentTransaction.commit();
+            fragmentTransaction.add(R.id.fragment_container, fragment, "LIST_ADD").commit();
         }
 
         Fab = (FloatingActionButton)findViewById(R.id.floatingActionButton2);
