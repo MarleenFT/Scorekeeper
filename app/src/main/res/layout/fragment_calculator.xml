@@ -6,11 +6,7 @@
     android:id="@+id/calculatorContainer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Calculator"
-
-
-
-    >
+    tools:context=".Calculator" >
 
     <Button
         android:id="@+id/b4"

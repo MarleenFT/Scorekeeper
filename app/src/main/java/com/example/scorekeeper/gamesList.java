@@ -40,7 +40,7 @@ public class gamesList extends Fragment {
         ListView listView = v.findViewById(R.id.listview);
 
         if (listItems.getListSize() > 0) {
-            ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(Objects.requireNonNull(getActivity()).getBaseContext(), android.R.layout.simple_list_item_1, listItems.getNamesList());
+            ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(Objects.requireNonNull(getActivity()).getBaseContext(), android.R.layout.simple_list_item_1, listItems.getNamesList());
 
             listView.setAdapter(arrayAdapter);
 

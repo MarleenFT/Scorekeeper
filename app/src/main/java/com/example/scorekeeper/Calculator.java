@@ -20,7 +20,6 @@ public class Calculator extends Fragment {
         // Required empty public constructor
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_calculator, container, false);
@@ -31,7 +30,7 @@ public class Calculator extends Fragment {
             button[i].setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
+                    argumentParser(v);
                 }
             });
         }
@@ -40,7 +39,7 @@ public class Calculator extends Fragment {
         return v;
     }
 
-    public void argumentParser (View v) {
+    private void argumentParser (View v) {
 
     }
 }

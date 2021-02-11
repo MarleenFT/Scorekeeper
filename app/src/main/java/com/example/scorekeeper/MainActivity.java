@@ -6,7 +6,6 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ListView;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -14,6 +13,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 public class MainActivity extends AppCompatActivity {
 
     public static FragmentManager fragmentManager;
+    boolean exiting = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         final ListItems listItems = new ListItems();
         listItems.addItems("Calculator", new Calculator());
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.floatingActionButton2);
+        FloatingActionButton fab = findViewById(R.id.floatingActionButton2);
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,7 +61,14 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
+        if (!exiting && getSupportFragmentManager().getBackStackEntryCount() == 0) {
+            Toast.makeText(MainActivity.this, "Are you sure you want to exit? Press back again.", Toast.LENGTH_SHORT).show();
+            exiting = true;
+        }
+        else {
+            exiting = false;
+            super.onBackPressed();
+        }
     }
 }
 

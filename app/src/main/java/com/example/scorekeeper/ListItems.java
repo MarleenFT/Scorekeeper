@@ -4,12 +4,12 @@ import androidx.fragment.app.Fragment;
 
 import java.util.ArrayList;
 
-public class ListItems {
+class ListItems {
     private ArrayList<String>   namesList;
     private ArrayList<Fragment> fragmentsList;
     private int listSize;
 
-    public ListItems() {
+    ListItems() {
         namesList =     new ArrayList<>();
         fragmentsList = new ArrayList<>();
         listSize = 0;
@@ -21,11 +21,11 @@ public class ListItems {
         listSize++;
     }
 
-    public ArrayList<String> getNamesList() {
+    ArrayList<String> getNamesList() {
         return namesList;
     }
 
-    public ArrayList<Fragment> getFragmentsList() {
+    ArrayList<Fragment> getFragmentsList() {
         return fragmentsList;
     }
 
@@ -37,7 +37,7 @@ public class ListItems {
         return fragmentsList.get(index);
     }
 
-    public int getListSize() {
+    int getListSize() {
         return listSize;
     }
 }
