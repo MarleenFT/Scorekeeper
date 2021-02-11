@@ -15,8 +15,6 @@ public class MainActivity extends AppCompatActivity {
 
     public static FragmentManager fragmentManager;
 
-    FloatingActionButton Fab;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,7 +22,6 @@ public class MainActivity extends AppCompatActivity {
 
         fragmentManager = getSupportFragmentManager();
         if(findViewById(R.id.fragment_container) != null) {
-
 
             if(savedInstanceState != null) {
                 return;
@@ -35,19 +32,58 @@ public class MainActivity extends AppCompatActivity {
             fragmentTransaction.add(R.id.fragment_container, fragment, "LIST_ADD").commit();
         }
 
-        Fab = (FloatingActionButton)findViewById(R.id.floatingActionButton2);
+        final ListItems listItems = new ListItems();
+        listItems.addItems("Calculator", new Calculator());
 
-        Fab.setOnClickListener(new View.OnClickListener() {
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.floatingActionButton2);
+
+        fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Calculator calculator = (Calculator)getSupportFragmentManager().findFragmentByTag("CALC_OPEN");
                 if (calculator != null && calculator.isVisible()) {
-                    fragmentManager.beginTransaction().replace(R.id.fragment_container, new gamesList(), "LIST_OPEN").commit();
+                    fragmentManager.popBackStackImmediate(getBackStackName(), 1);
                 }
                 else {
-                    fragmentManager.beginTransaction().replace(R.id.fragment_container, new Calculator(), "CALC_OPEN").commit();
+                    fragmentManager.beginTransaction().replace(R.id.fragment_container, listItems.getFragmentByIndex(0), "CALC_OPEN").addToBackStack(listItems.getNameByIndex(0)).commit();
                 }
             }
         });
     }
+
+    private String getBackStackName() {
+        String returnString;
+        int count = getSupportFragmentManager().getBackStackEntryCount();
+        returnString = fragmentManager.getBackStackEntryAt(count - 1).getName();
+
+        return returnString;
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

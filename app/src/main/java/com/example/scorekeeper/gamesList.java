@@ -14,6 +14,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 
 /**
@@ -21,38 +22,42 @@ import java.util.ArrayList;
  */
 public class gamesList extends Fragment {
 
-    ListView listView;
+    private ListItems listItems;
 
     public gamesList() {
         // Required empty public constructor
+        listItems = new ListItems();
+
+        listItems.addItems("Munchkin",  new Munchkin());
+        listItems.addItems("Yahtzee",   new Yahtzee());
+        listItems.addItems("Scrabble",  new Scrabble());
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_games_list, container, false);
 
-        listView = v.findViewById(R.id.listview);
+        ListView listView = v.findViewById(R.id.listview);
 
-        ArrayList<String> arrayList = new ArrayList<>();
-        arrayList.add("Munchkin");
-        arrayList.add("Yahtzee");
-        arrayList.add("Scrabble");
+        if (listItems.getListSize() > 0) {
+            ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(Objects.requireNonNull(getActivity()).getBaseContext(), android.R.layout.simple_list_item_1, listItems.getNamesList());
 
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getActivity().getBaseContext(), android.R.layout.simple_list_item_1, arrayList);
+            listView.setAdapter(arrayAdapter);
 
-        listView.setAdapter(arrayAdapter);
-
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                if (position == 2) {
-                    MainActivity.fragmentManager.beginTransaction().replace(R.id.fragment_container, new Scrabble()).commit();
+            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    checkListItem(position);
                 }
-            }
-        });
+            });
+        }
 
         // Inflate the layout for this fragment
         return v;
+    }
+
+    private void checkListItem(int pos) {
+        MainActivity.fragmentManager.beginTransaction().replace(R.id.fragment_container, listItems.getFragmentByIndex(pos)).addToBackStack(null).commit();
     }
 
 }
