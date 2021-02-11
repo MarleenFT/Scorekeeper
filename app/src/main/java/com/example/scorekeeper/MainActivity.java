@@ -40,7 +40,6 @@ public class MainActivity extends AppCompatActivity {
         Fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this, "You clicked on the floating action button, very good!", Toast.LENGTH_SHORT).show();
                 Calculator calculator = (Calculator)getSupportFragmentManager().findFragmentByTag("CALC_OPEN");
                 if (calculator != null && calculator.isVisible()) {
                     fragmentManager.beginTransaction().replace(R.id.fragment_container, new gamesList(), "LIST_OPEN").commit();
