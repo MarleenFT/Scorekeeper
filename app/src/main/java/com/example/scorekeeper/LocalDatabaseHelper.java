@@ -1,5 +1,6 @@
 package com.example.scorekeeper;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -16,7 +17,6 @@ public class LocalDatabaseHelper extends SQLiteOpenHelper {
 
     public LocalDatabaseHelper(@Nullable Context context) {
         super(context, DATABASE_NAME, null, 1);
-        SQLiteDatabase db = this.getWritableDatabase();
     }
 
     @Override
@@ -28,5 +28,15 @@ public class LocalDatabaseHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME + ";");
         onCreate(db);
+    }
+
+    public boolean insertData(int totalScore, int scoreToAdd) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(TOTAL_SCORE, totalScore);
+        contentValues.put(SCORE_TO_ADD, scoreToAdd);
+        long result = db.insert(TABLE_NAME, null, contentValues);
+
+        return (result != -1);
     }
 }
