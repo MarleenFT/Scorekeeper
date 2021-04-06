@@ -12,7 +12,6 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class MainActivity extends AppCompatActivity {
 
-
     public static FragmentManager fragmentManager;
     boolean exiting = false;
 
@@ -29,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            gamesList fragment = new gamesList();
+            gamesList fragment = new gamesList(MainActivity.this);
             fragmentTransaction.add(R.id.fragment_container, fragment, "LIST_ADD").commit();
         }
 
@@ -43,21 +42,13 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Calculator calculator = (Calculator)getSupportFragmentManager().findFragmentByTag("CALC_OPEN");
                 if (calculator != null && calculator.isVisible()) {
-                    fragmentManager.popBackStackImmediate(getBackStackName(), 1);
+                    fragmentManager.popBackStackImmediate(listItems.getBackStackName(), 1);
                 }
                 else {
-                    fragmentManager.beginTransaction().replace(R.id.fragment_container, listItems.getFragmentByIndex(0), "CALC_OPEN").addToBackStack(listItems.getNameByIndex(0)).commit();
+                    listItems.replaceFragmentContainer(listItems.getFragmentByIndex(0), listItems.getNameByIndex(0), "CALC_OPEN");
                 }
             }
         });
-    }
-
-    private String getBackStackName() {
-        String returnString;
-        int count = getSupportFragmentManager().getBackStackEntryCount();
-        returnString = fragmentManager.getBackStackEntryAt(count - 1).getName();
-
-        return returnString;
     }
 
     @Override

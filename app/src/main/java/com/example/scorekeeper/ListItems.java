@@ -25,9 +25,9 @@ class ListItems {
         return namesList;
     }
 
-    ArrayList<Fragment> getFragmentsList() {
-        return fragmentsList;
-    }
+//    ArrayList<Fragment> getFragmentsList() {
+//        return fragmentsList;
+//    }
 
     String getNameByIndex(int index) {
         return namesList.get(index);
@@ -39,5 +39,17 @@ class ListItems {
 
     int getListSize() {
         return listSize;
+    }
+
+    void replaceFragmentContainer(Fragment fragment, String name, String tag) {
+        MainActivity.fragmentManager.beginTransaction().replace(R.id.fragment_container, fragment, tag).addToBackStack(name).commit();
+    }
+
+    String getBackStackName() {
+        String returnString;
+        int count = MainActivity.fragmentManager.getBackStackEntryCount();
+        returnString = MainActivity.fragmentManager.getBackStackEntryAt(count - 1).getName();
+
+        return returnString;
     }
 }

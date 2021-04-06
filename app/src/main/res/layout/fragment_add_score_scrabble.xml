@@ -25,7 +25,7 @@
         android:layout_marginTop="24dp"
         android:layout_marginEnd="16dp"
         android:ems="10"
-        android:inputType="textPersonName"
+        android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/editScoreGuideText"
@@ -39,5 +39,15 @@
         android:layout_marginTop="8dp"
         android:text="Commit"
         app:layout_constraintStart_toEndOf="@+id/editScoreGuideText"
+        app:layout_constraintTop_toBottomOf="@+id/editScore" />
+
+    <Button
+        android:id="@+id/remButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:text="Remove all data"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editScore" />
 </androidx.constraintlayout.widget.ConstraintLayout>

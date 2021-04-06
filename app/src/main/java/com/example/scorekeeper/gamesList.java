@@ -1,6 +1,7 @@
 package com.example.scorekeeper;
 
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -24,13 +25,13 @@ public class gamesList extends Fragment {
 
     private ListItems listItems;
 
-    public gamesList() {
+    public gamesList(Context context) {
         // Required empty public constructor
         listItems = new ListItems();
 
         listItems.addItems("Munchkin",  new Munchkin());
         listItems.addItems("Yahtzee",   new Yahtzee());
-        listItems.addItems("Scrabble",  new Scrabble());
+        listItems.addItems("Scrabble",  new Scrabble(context));
     }
 
     @Override
@@ -57,7 +58,7 @@ public class gamesList extends Fragment {
     }
 
     private void checkListItem(int pos) {
-        MainActivity.fragmentManager.beginTransaction().replace(R.id.fragment_container, listItems.getFragmentByIndex(pos)).addToBackStack(null).commit();
+        listItems.replaceFragmentContainer(listItems.getFragmentByIndex(pos), null, null);
     }
 
 }
