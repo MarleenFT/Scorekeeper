@@ -24,14 +24,28 @@
         android:id="@+id/munchkinLevel"
         android:layout_width="70dp"
         android:layout_height="60dp"
+        android:text="@string/munchkin_level"
         android:textAlignment="center"
         android:textSize="@android:dimen/app_icon_size"
-        android:text="@string/munchkin_level"
         app:layout_constraintBottom_toTopOf="@+id/munchkinLevelBar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.8" />
+
+    <TextView
+        android:id="@+id/munchkinGear"
+        android:layout_width="70dp"
+        android:layout_height="60dp"
+        android:text="@string/munchkin_level"
+        android:textAlignment="center"
+        android:textSize="@android:dimen/app_icon_size"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.453" />
 
     <TextView
         android:id="@+id/textView2"
@@ -45,4 +59,28 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.8" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/m_gear_name"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/munchkinLevelBar"
+        app:layout_constraintVertical_bias="0.22" />
+
+    <SeekBar
+        android:id="@+id/munchkinGearBar"
+        android:layout_width="320dp"
+        android:layout_height="50dp"
+        android:max="50"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/munchkinGear"
+        app:layout_constraintVertical_bias="0.059" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

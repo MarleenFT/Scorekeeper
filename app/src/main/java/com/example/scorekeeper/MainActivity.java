@@ -33,14 +33,14 @@ public class MainActivity extends AppCompatActivity {
         }
 
         final ListItems listItems = new ListItems();
-        listItems.addItems("Calculator", new Calculator());
+        listItems.addItems("HighScore", new HighScore());
 
         FloatingActionButton fab = findViewById(R.id.floatingActionButton2);
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Calculator calculator = (Calculator)getSupportFragmentManager().findFragmentByTag("CALC_OPEN");
+                HighScore calculator = (HighScore)getSupportFragmentManager().findFragmentByTag("CALC_OPEN");
                 if (calculator != null && calculator.isVisible()) {
                     fragmentManager.popBackStackImmediate(listItems.getBackStackName(), 1);
                 }

@@ -1,12 +1,31 @@
 <resources>
     <string name="app_name">Scorekeeper</string>
 
-    <string name="calculator_output">0</string>
-    <string name="calculator_input"> </string>
+    <string name="hs_name">Name</string>
+    <string name="hs_game">Game</string>
+    <string name="hs_score">Score</string>
+    <string name="hs_inp_data">Input data</string>
+    <string name="hs_sho_data">Show data</string>
+    <string name="hs_aut_hint">Type here</string>
 
     <string name="m_level_name">Level</string>
     <string name="munchkin_level">1</string>
+    <string name="m_gear_name">Gear</string>
 
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="s_add_score">Add score</string>
+
+    <string name="yaht_1">aces</string>
+    <string name="yaht_2">Twos</string>
+    <string name="yaht_3">Threes</string>
+    <string name="yaht_4">Fours</string>
+    <string name="yaht_5">Fives</string>
+    <string name="yaht_6">Sixes</string>
+    <string name="yaht_7">3 OAK</string>
+    <string name="yaht_8">4 OAK</string>
+    <string name="yaht_9">Full House</string>
+    <string name="yaht_10">Sm Straight</string>
+    <string name="yaht_11">Lg Straight</string>
+    <string name="yaht_12">YAHTZEE</string>
+    <string name="yaht_13">Chance</string>
 
 </resources>

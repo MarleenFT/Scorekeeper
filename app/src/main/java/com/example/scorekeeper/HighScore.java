@@ -13,15 +13,15 @@ import android.view.ViewGroup;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class Calculator extends Fragment {
+public class HighScore extends Fragment {
 
-    public Calculator() {
+    public HighScore() {
         // Required empty public constructor
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_calculator, container, false);
+        View v = inflater.inflate(R.layout.fragment_high_score, container, false);
 
         // Inflate the layout for this fragment
         return v;

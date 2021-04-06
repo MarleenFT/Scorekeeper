@@ -8,13 +8,11 @@ import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import java.util.ArrayList;
 import java.util.Objects;
 
 
@@ -25,7 +23,7 @@ public class gamesList extends Fragment {
 
     private ListItems listItems;
 
-    public gamesList(Context context) {
+    gamesList(Context context) {
         // Required empty public constructor
         listItems = new ListItems();
 

@@ -8,6 +8,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.text.method.ScrollingMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +17,9 @@ import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 
 /**
@@ -23,15 +27,13 @@ import android.widget.TableRow;
  */
 public class Scrabble extends Fragment {
 
-    LocalDatabaseHelper MyDB;
+    private LocalDatabaseHelper MyDB;
     private ListItems listItems;
-    Context _context;
 
-    public Scrabble(Context context) {
+    Scrabble(Context context) {
         // Required empty public constructor
-        _context = context;
 
-        MyDB = new LocalDatabaseHelper(_context);
+        MyDB = new LocalDatabaseHelper(context);
 
         listItems = new ListItems();
         listItems.addItems("AddToScore", new addScoreScrabble(context));
@@ -50,15 +52,16 @@ public class Scrabble extends Fragment {
             }
         });
 
-        TableRow tableRow = new TableRow(_context);
-
-        viewAll();
+        String pointItems = viewAll();
+        TextView tv = view.findViewById(R.id.scoreText);
+        tv.setMovementMethod(new ScrollingMovementMethod());
+        tv.setText(pointItems);
         
         // Inflate the layout for this fragment
         return view;
     }
 
-    private void viewAll() {
+    private String viewAll() {
         Cursor data = MyDB.getAllData();
 
         if (data.getCount() > 0) {
@@ -67,18 +70,10 @@ public class Scrabble extends Fragment {
                 buffer.append("Total: ").append(data.getInt(1)).append("\n");
                 buffer.append("Added: ").append(data.getInt(2)).append("\n\n");
             }
-            showPoints("Data", buffer.toString());
+            return buffer.toString();
         }
         else
-            showPoints("Error", "No data was found");
-    }
-
-    private void showPoints(String title, String Message) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(_context);
-        builder.setCancelable(true);
-        builder.setTitle(title);
-        builder.setMessage(Message);
-        builder.show();
+            return "No data was found!";
     }
 
 }
